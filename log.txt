@@ -1,0 +1,33 @@
+2019-2-11 11:10:38	 - 	 Action: RESET	 	 User: Marius SK	 	 Authenticated: true
+2019-2-11 11:13:08	 - 	 Action: RESET	 	 User: Marius SK	 	 Authenticated: true
+2019-2-11 11:13:51	 - 	 Action: RESET	 	 User: Marius SK	 	 Authenticated: true
+2019-2-11 11:14:16	 - 	 Action: RESET	 	 User: Marius SK	 	 Authenticated: true
+2019-2-11 11:16:04	 - 	 Action: RESET	 	 User: Marius SK	 	 Authenticated: true
+2019-2-11 11:16:15	 - 	 Action: RESET	 	 User: Marius SK	 	 Authenticated: true
+2019-2-11 11:16:33	 - 	 Action: help	 	 User: Marius SK	 	 Authenticated: true
+2019-2-11 11:16:49	 - 	 Action: RESET	 	 User: Marius SK	 	 Authenticated: true
+2019-2-11 11:16:54	 - 	 Action: help	 	 User: Marius SK	 	 Authenticated: true
+2019-2-11 11:18:11	 - 	 Action: RESET	 	 User: Marius SK	 	 Authenticated: true
+2019-2-11 11:18:20	 - 	 Action: help	 	 User: Marius SK	 	 Authenticated: true
+2019-2-11 11:19:25	 - 	 Action: RESET	 	 User: Marius SK	 	 Authenticated: true
+2019-2-11 11:19:38	 - 	 Action: fredag	 	 User: Marius SK	 	 Authenticated: true
+2019-2-11 11:23:02	 - 	 Action: RESET	 	 User: Marius SK	 	 Authenticated: true
+2019-2-11 11:23:57	 - 	 Action: help	 	 User: Marius SK	 	 Authenticated: true
+2019-2-11 11:28:42	 - 	 Action: KILL	 	 User: Marius SK	 	 Authenticated: true
+2019-2-11 11:40:42	 - 	 Action: ALERT	 	 User: Marius SK	 	 Authenticated: true
+2019-2-11 11:52:51	 - 	 Action: Startup	 	 User: SERVER	 	 Authenticated: true
+2019-2-11 12:12:28	 - 	 Action: moodle	 	 User: Marius SK	 	 Authenticated: false
+2019-2-11 15:23:23	 - 	 Action: Startup	 	 User: SERVER	 	 Authenticated: true
+2019-2-11 15:24:07	 - 	 Action: RESET	 	 User: Marius SK	 	 Authenticated: true
+2019-2-11 15:24:10	 - 	 Action: Startup	 	 User: SERVER	 	 Authenticated: true
+2019-2-11 15:26:50	 - 	 Action: RESET	 	 User: Marius SK	 	 Authenticated: true
+2019-2-11 15:26:52	 - 	 Action: Startup	 	 User: SERVER	 	 Authenticated: true
+2019-2-11 19:29:09	 - 	 Action: Startup	 	 User: SERVER	 	 Authenticated: true
+2019-2-11 20:50:05	 - 	 Action: RESET	 	 User: Marius SK	 	 Authenticated: true
+2019-2-11 20:50:08	 - 	 Action: Startup	 	 User: SERVER	 	 Authenticated: true
+2019-2-11 20:51:08	 - 	 Action: Startup	 	 User: SERVER	 	 Authenticated: true
+2019-2-11 20:52:03	 - 	 Action: Startup	 	 User: SERVER	 	 Authenticated: true
+2019-2-11 20:55:13	 - 	 Action: RESET	 	 User: Marius SK	 	 Authenticated: true
+2019-2-11 20:55:16	 - 	 Action: Startup	 	 User: SERVER	 	 Authenticated: true
+2019-2-11 20:56:54	 - 	 Action: REGISTER	 	 User: Marius SK	 	 Authenticated: true
+2019-2-11 21:17:07	 - 	 Action: Startup	 	 User: SERVER	 	 Authenticated: true

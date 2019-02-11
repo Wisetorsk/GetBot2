@@ -1,0 +1,14 @@
+{
+    "name": "sk-bot",
+    "version": "0.0.1",
+    "description": "GET user and attendance registrarion bot",
+    "main": "bot.js",
+    "author": "Marius S Kristiansen",
+    "permissions": 2080898263,
+    "dependencies": {
+        "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
+        "file-system": "^2.2.2",
+        "fs": "0.0.1-security",
+        "winston": "^3.2.1"
+    }
+}
