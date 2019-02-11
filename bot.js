@@ -50,7 +50,7 @@ bot.on('ready', function (evt) {
 setTimeout(function() {
     msg(channels.test, 'Oracle startIT bot is now running');
     bot.getAllUsers(function(err) {
-        if (err) errorOut(channels.test, 'User aquisition failed');
+        if (err) errorOut(channels.test, 'User aquisition failed\n' + err);
     })
 }, 2000);
 
