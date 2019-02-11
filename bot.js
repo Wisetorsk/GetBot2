@@ -86,11 +86,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             case 'PULL':
                 if (mode == 'admin') {
                     msg(channelID, 'Pulling newest build');
-                    exec('updateGetBot', (err, stdout, stderr) => {
+                    exec('/var/getBot/GetBot2/pull.sh', (err, stdout, stderr) => {
                         if (err) {
                           // node couldn't execute the command
                           console.log('Exec failed');
-                          errorOut(channels.test, 'Reset failed.\n' + err)
+                          errorOut(channels.test, 'Refresh failed.\n' + err)
                           return;
                         }
                       });
