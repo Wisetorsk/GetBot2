@@ -1,3 +1,1 @@
-shopt -s expand_aliases
-source /home/pi/.bashrc
-startBot
+node /var/getBot/GetBot2/bot.js
