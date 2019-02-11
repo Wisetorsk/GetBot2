@@ -17,7 +17,8 @@ var helpMessage1 = "Available commands: \n" +
 "!fredag - Friday message\n```";
 var helpMessage2 = "\nADMIN level commands:\n" + 
 "```\n" +
-"!RESET - Used to reset the bot server.\n" +
+"!REFRESH - Used to restart the bot server program.\n" +
+"!REBOOT - Used to restart the bot server.\n" +
 "!KILL - Shuts the bot down. \n" + 
 "!REGISTER userID username admin(true/false) - Adds a user to local user register\n" +
 "!REMOVE userID - Removes a user from the local user register\n" +
@@ -82,7 +83,15 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 });
                 break;
 
-            case 'RESET':
+            case 'REBOOT':
+                if (mode == 'admin') {
+                    msg(channelID, 'REBOOTING SERVER PLEASE ALLOW ~1-5min FOR FULL REBOOT\n brb');
+                    setTimeout(reboot, 1000);
+                } else {
+                    errorOut(channelID, 'User not authorized');
+                }
+                break;
+            case 'REFRESH':
                 if(mode == 'admin') {
                     msg(channelID, 'RESETTING BOT');
                     setTimeout(reset, 1000);
@@ -196,11 +205,34 @@ function writeToJSON(data) {
     fs.writeFileSync('./users.json', JSON.stringify(data));
 }
 
+function reboot() {
+    console.log('Rebooting');
+    var script = 'null';
+    if (process.platform === 'win32') {
+        script = 'reboot.bat';
+    } else {
+        script = 'reboot.sh';
+    }
+    exec(script, (err, stdout, stderr) => {
+        if (err) {
+            console.log('Exec failed');
+            errorOut(channels.test, 'Reboot failed');
+            return;
+        }
+    });
+}
+
 function reset() {
     // Function is supposed to start an external batch script that kills the server, and restarts it
     console.log('Resetting');
     setTimeout(process.exit, 1000);
-    exec('reset.bat', (err, stdout, stderr) => {
+    var script = 'null';
+    if (process.platform === 'win32') {
+        script = 'reset.bat';
+    } else if (process.platform === 'linux') {
+        script = 'reset.sh';
+    }
+    exec(script, (err, stdout, stderr) => {
         if (err) {
           // node couldn't execute the command
           console.log('Exec failed');
