@@ -225,7 +225,7 @@ function reboot() {
 function reset() {
     // Function is supposed to start an external batch script that kills the server, and restarts it
     console.log('Resetting');
-    setTimeout(process.exit, 1000);
+    setTimeout(process.exit, 5000);
     var script = 'null';
     if (process.platform === 'win32') {
         script = './reset.bat';
