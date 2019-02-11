@@ -1,1 +1,1 @@
-node /var/getBot/GetBot2/bot.js
+startBot
