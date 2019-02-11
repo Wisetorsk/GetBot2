@@ -211,12 +211,12 @@ function reboot() {
     if (process.platform === 'win32') {
         script = 'reboot.bat';
     } else {
-        script = 'var/getBot/GetBot/reboot.sh';
+        script = '/var/getBot/GetBot/reboot.sh';
     }
     exec(script, (err, stdout, stderr) => {
         if (err) {
             console.log('Exec failed');
-            errorOut(channels.test, 'Reboot failed');
+            errorOut(channels.test, 'Reboot failed\n' + err);
             return;
         }
     });
@@ -228,9 +228,9 @@ function reset() {
     setTimeout(process.exit, 5000);
     var script = 'null';
     if (process.platform === 'win32') {
-        script = 'var/getBot/GetBot/reset.bat';
+        script = '/var/getBot/GetBot/reset.bat';
     } else if (process.platform === 'linux') {
-        script = 'var/getBot/GetBot/reset.sh';
+        script = '/var/getBot/GetBot/reset.sh';
     }
     exec(script, (err, stdout, stderr) => {
         if (err) {
