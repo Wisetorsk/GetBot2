@@ -1,2 +1,1 @@
-cd /var/getBot/GetBot2/
-node bot.js
+node /var/getBot/GetBot2/bot.js
