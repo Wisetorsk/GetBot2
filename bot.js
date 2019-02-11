@@ -211,7 +211,7 @@ function reboot() {
     if (process.platform === 'win32') {
         script = 'reboot.bat';
     } else {
-        script = './reboot.sh';
+        script = 'var/getBot/GetBot/reboot.sh';
     }
     exec(script, (err, stdout, stderr) => {
         if (err) {
@@ -228,9 +228,9 @@ function reset() {
     setTimeout(process.exit, 5000);
     var script = 'null';
     if (process.platform === 'win32') {
-        script = './reset.bat';
+        script = 'var/getBot/GetBot/reset.bat';
     } else if (process.platform === 'linux') {
-        script = './reset.sh';
+        script = 'var/getBot/GetBot/reset.sh';
     }
     exec(script, (err, stdout, stderr) => {
         if (err) {
