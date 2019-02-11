@@ -236,7 +236,7 @@ function reset() {
         if (err) {
           // node couldn't execute the command
           console.log('Exec failed');
-          errorOut(channels.test, 'Reset failed.')
+          errorOut(channels.test, 'Reset failed.\n' + err)
           return;
         }
       });
