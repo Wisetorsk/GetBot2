@@ -83,6 +83,20 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 });
                 break;
 
+            case 'PULL':
+                if (mode == 'admin') {
+                    msg(channelID, 'Pulling newest build');
+                    exec('updateGetBot', (err, stdout, stderr) => {
+                        if (err) {
+                          // node couldn't execute the command
+                          console.log('Exec failed');
+                          errorOut(channels.test, 'Reset failed.\n' + err)
+                          return;
+                        }
+                      });
+                }
+                break;
+
             case 'REBOOT':
                 if (mode == 'admin') {
                     msg(channelID, 'REBOOTING SERVER PLEASE ALLOW ~1-5min FOR FULL REBOOT\n brb');
