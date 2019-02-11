@@ -157,7 +157,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
             case 'ALERT':
                 if (mode == 'admin') {
-                    msg(channelID, 'HEISANN!', true);
+                    msg(channelID, '<@!everyone>HEISANN!', false);
                 } else {
                     msg(channelID, 'You are not registered admin');
                 }
@@ -184,7 +184,7 @@ function addUser(ID, name, admin, channel) {
     writeToJSON(users);
 }
 
-function msg(channel, msg, tts=false) {
+function msg(channel, msg, tts=true) {
     bot.sendMessage({
         to: channel,
         message: msg,
