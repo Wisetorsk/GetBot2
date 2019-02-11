@@ -18,6 +18,7 @@ var helpMessage1 = "Available commands: \n" +
 var helpMessage2 = "\nADMIN level commands:\n" + 
 "```\n" +
 "!REFRESH - Used to restart the bot server program.\n" +
+"!PULL - Pulls the newest build from github.\n" +
 "!REBOOT - Used to restart the bot server.\n" +
 "!KILL - Shuts the bot down. \n" + 
 "!REGISTER userID username admin(true/false) - Adds a user to local user register\n" +
