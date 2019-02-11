@@ -47,12 +47,9 @@ bot.on('ready', function (evt) {
     writeLog('Startup', 'SERVER', true);
 });
 
-/*setTimeout(function() {
+setTimeout(function() {
     msg(channels.test, 'Oracle startIT bot is now running');
-    bot.getAllUsers(function(err) {
-        if (err) errorOut(channels.test, 'User aquisition failed\n' + err);
-    })
-}, 2000);*/
+}, 2000);
 
 bot.on('guildMemberAdd', function(callback) { /* Event called when someone joins the server */
     if(callback.guild_id == channels.test)
