@@ -83,6 +83,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         console.log('Run command: !'+cmd + "\n Invoked by: " + user + "\t ID: " + userID + "\n Additional arguments: " + args);
         var mode = users[userID].admin ? 'admin' : 'user';
         var outcome = false;
+        
         if (!userID in users) {
             msg(channelID, 'Command invoked by unregistered user. Please regiser user using command !REGISTER');
             return;
