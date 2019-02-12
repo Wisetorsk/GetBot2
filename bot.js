@@ -9,7 +9,9 @@ var timeout = 1; // Server message timeout in minutes
 const { exec } = require('child_process');
 
 var users = require('../users.json');
-var helpMessage1 = "Available commands: \n" + 
+var helpMessage1 = "**Help/info for oracle bot.** \nMessages sent by the bot has a timeout of  " + timeout + (timeout == 1) ? " minute" : " minutes" +"\n" + 
+"The bot automatically deletes the invocing command\n" + 
+"Available commands: \n" + 
 "```\n" + 
 "!ping - Use it to see if the bot is live.\n" + 
 "!help - Display help info.\n" + 
@@ -83,7 +85,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         console.log('Run command: !'+cmd + "\n Invoked by: " + user + "\t ID: " + userID + "\n Additional arguments: " + args);
         var mode = users[userID].admin ? 'admin' : 'user';
         var outcome = false;
-        
+
         if (!userID in users) {
             msg(channelID, 'Command invoked by unregistered user. Please regiser user using command !REGISTER');
             return;
