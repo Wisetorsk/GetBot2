@@ -125,11 +125,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                             errorOut(channelID, err);
                             return;
                         }
-                        if(args[0] == ' ') {
-                            msg(channelID, '__**It\'s dangerous to go alone, take this:**__\nhttps://discord.gg/'+res.code);
-                        } else if (args[0]) {
+                        if(args[0]) {
                             msg(args[0], 'https://discord.gg/'+res.code, false);
                             msg(channelID, 'Invite sent to userID: ' + args[0]);
+                        } else {
+                            msg(channelID, '__**It\'s dangerous to go alone, take this:**__\nhttps://discord.gg/'+res.code);
                         }
                     })
                     
