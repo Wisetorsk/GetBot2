@@ -59,8 +59,13 @@ bot.on('guildMemberAdd', function(callback) { /* Event called when someone joins
     });
 });
 
+/*bot.on('message', function (user, userID, channelID, message, evt) {
+    if (message.substring)
+});*/
+
 bot.on('message', function (user, userID, channelID, message, evt) {
     // It will listen for messages that will start with `!`
+    console.log(message.d.id);
     if (message.substring(0, 1) == '!') {
         
         var args = message.substring(1).split(' ');
@@ -73,7 +78,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             msg(channelID, 'Command invoked by unregistered user. Please regiser user using command !REGISTER');
             return;
         }
-        console.log(evt.d.id);
 
         switch(cmd) {
             case 'ping':
@@ -100,7 +104,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 break;
 
             case 'ontime':
-                msg(channelID, 'Bot ontime: ' + ((new Date() - startTime)/1000)/60 + ' minutes');
+                msg(channelID, 'Bot ontime: ' + Math.round(((new Date() - startTime)/1000)/60, 1) + ' minutes');
                 deleteMessage(channelID, evt.d.id);
                 break;
 
