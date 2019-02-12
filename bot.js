@@ -3,7 +3,7 @@ var logger = require('winston');
 var auth = require('../auth.json');
 var fs = require('fs');
 var drole = 'START IT 4'; // Default role given to new joins
-
+var startTime = new Date();
 const { exec } = require('child_process');
 
 var users = require('../users.json');
@@ -95,6 +95,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 }
                 break;
 
+            case 'ontime':
+                msg(channelId, 'Bot ontime: ' + ((new Date() - startTime)/1000)/60);
+                break;
+
             case 'REBOOT':
                 if (mode == 'admin') {
                     msg(channelID, 'REBOOTING SERVER PLEASE ALLOW ~1-5min FOR FULL REBOOT\n brb');
@@ -103,6 +107,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     errorOut(channelID, 'User not authorized');
                 }
                 break;
+
             case 'REFRESH':
                 if(mode == 'admin') {
                     msg(channelID, 'RESETTING BOT');
