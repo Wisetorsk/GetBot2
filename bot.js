@@ -61,7 +61,9 @@ bot.on('guildMemberAdd', function(callback) { /* Event called when someone joins
 
 bot.on('message', function (user, userID, channelID, message, evt) {
     if (message.substring(0,6) == 'SERVER') {
-        message.deleteMessage(1000);
+        setTimeout(function() {
+            deleteMessage(channelID, evt.d.id);
+        }, 10000);
     }
 });
 
