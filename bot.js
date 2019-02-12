@@ -102,7 +102,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     outcome = true;
                     bot.uploadFile({
                         to: channelID,
-                        file: '/var/getBot/GetBot2/log.txt'
+                        file: '/var/getBot/GetBot2/log.txt',
+                        message: 'SERVER\nServer post log'
                     }, function(err, res) {
                         if (err) {
                             errorOut(channelID, err);
