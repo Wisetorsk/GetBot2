@@ -59,9 +59,11 @@ bot.on('guildMemberAdd', function(callback) { /* Event called when someone joins
     });
 });
 
-/*bot.on('message', function (user, userID, channelID, message, evt) {
-    if (message.substring)
-});*/
+bot.on('message', function (user, userID, channelID, message, evt) {
+    if (message.substring(0,6) == 'SERVER') {
+        message.deleteMessage(1000);
+    }
+});
 
 bot.on('message', function (user, userID, channelID, message, evt) {
     // It will listen for messages that will start with `!`
