@@ -73,6 +73,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             msg(channelID, 'Command invoked by unregistered user. Please regiser user using command !REGISTER');
             return;
         }
+        console.log(evt.d.id);
 
         switch(cmd) {
             case 'ping':
