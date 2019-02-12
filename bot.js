@@ -26,6 +26,7 @@ var helpMessage2 = "\nADMIN level commands:\n" +
 "!REGISTER userID username admin(true/false) - Adds a user to local user register\n" +
 "!REMOVE userID - Removes a user from the local user register\n" +
 "!POSTLOG - Replies with the server log file\n" +
+"!INVITE userID - if userID is given the server sends the invite to that user in pm, else it will post an invite link in chat\n" +
 "!ALERT message - Posts a tts global message tagging users```";
 
 var channels = {
@@ -114,21 +115,24 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             case 'INVITE':
                 if (mode == 'admin'){
                     outcome = true;
-                    if (args[0] != '') {
-                        console.log('No args');
-                        channelID, bot.createInvite({
-                            channelID: channelID,
-                            max_age: (24*60*60),
-                            max_users: 0,
-                            temporary: false
-                        }, function (err, res) {
-                            if(err) {
-                                errorOut(channelID, err);
-                                return;
-                            }
+                    channelID, bot.createInvite({
+                        channelID: channelID,
+                        max_age: (24*60*60),
+                        max_users: 0,
+                        temporary: false
+                    }, function (err, res) {
+                        if(err) {
+                            errorOut(channelID, err);
+                            return;
+                        }
+                        if(args[0] == '') {
                             msg(channelID, '__**It\'s dangerous to go alone, take this:**__\nhttps://discord.gg/'+res.code);
-                        })
-                    }
+                        } else if (args[0]) {
+                            msg(args[0], 'https://discord.gg/'+res.code);
+                            msg(channelID, 'Invite sent');
+                        }
+                    })
+                    
                 }
                 deleteMessage(channelID, evt.d.id);
                 break;
