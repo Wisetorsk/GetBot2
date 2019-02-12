@@ -4,7 +4,7 @@ var auth = require('../auth.json');
 var fs = require('fs');
 var drole = 'START IT 4'; // Default role given to new joins
 var startTime = new Date();
-var timeout = 30; // Server message timeout in minutes
+var timeout = 1; // Server message timeout in minutes
 
 const { exec } = require('child_process');
 
