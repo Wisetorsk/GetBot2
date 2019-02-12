@@ -186,6 +186,21 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 deleteMessage(channelID, evt.d.id);
                 break;
 
+            case 'LISTUSERS':
+                if(mode == 'admin') {
+                    var ids = Object.keys(users);
+                    var index = 0;
+                    var outString = 'List all registered users\n';
+                    for (let user in users) {
+                        outString += 'User ID: ' + ids[index] + '\t\tUsername: ' + user.name + '\t\tAdmin: ' + user.admin;
+                        index++;
+                    }
+                    outcome = true;
+                    msg(channelID, outString);
+                }
+                deleteMessage(channelID, evt.d.id);
+                break;
+                
             case 'help':
                 msg(channelID, helpMessage1);
                 msg(channelID, helpMessage2);
