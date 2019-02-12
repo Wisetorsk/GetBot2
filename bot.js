@@ -95,6 +95,36 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 deleteMessage(channelID, evt.d.id);
                 break;
 
+            case 'POSTLOG':
+                if (mode == 'admin') {
+                    bot.uploadFile({
+                        to: channelID,
+                        file: '/var/getBot/GetBot2/log.txt'
+                    }, function(err, res) {
+                        if (err) {
+                            errorOut(channelID, err);
+                        }
+                    })
+                }
+                break;
+
+            case 'INVITE':
+                if (mode == 'admin'){
+                    if (args[0] != '') {
+                        console.log('No args');
+                        bot.createInvite({
+                            max_age: 24*60*60,
+                            max_users: 100,
+                            temporary: false
+                        }, function (err, res) {
+                            if(err) {
+                                errorOut(channelID, err);
+                            }
+                        })
+                    }
+                }
+                break;
+
             case 'PULL':
                 if (mode == 'admin') {
                     msg(channelID, 'Pulling newest build');
@@ -106,6 +136,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                           return;
                         }
                       });
+                    outcome = true;
                 }
                 deleteMessage(channelID, evt.d.id);
                 break;
@@ -119,6 +150,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 if (mode == 'admin') {
                     msg(channelID, 'REBOOTING SERVER PLEASE ALLOW ~1-5min FOR FULL REBOOT\n brb');
                     setTimeout(reboot, 1000);
+                    outcome = true;
                 } else {
                     errorOut(channelID, 'User not authorized');
                 }
@@ -129,10 +161,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 if(mode == 'admin') {
                     msg(channelID, 'RESETTING BOT');
                     setTimeout(reset, 1000);
+                    outcome = true;
                 } else {
                     msg(channelID, 'You are not authorized for this command.');
                 }
-                outcome = true;
                 deleteMessage(channelID, evt.d.id);
                 break;
 
@@ -301,3 +333,4 @@ function deleteMessage(channel, message) {
     });
     console.log('Mesage id: '+ message + ' Deleted from channel: ' + channel);
 }
+
