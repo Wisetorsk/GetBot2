@@ -143,6 +143,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                           console.log('Exec failed');
                           errorOut(channels.test, 'Refresh failed.\n' + err);
                           return;
+                        } else {
+                            msg(channelID, 'Pull complete');
                         }
                       });
                 }
