@@ -117,8 +117,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     if (args[0] != '') {
                         console.log('No args');
                         bot.createInvite({
-                            max_age: 24*60*60,
-                            max_users: 100,
+                            max_age: (24*60*60),
+                            max_users: 0,
                             temporary: false
                         }, function (err, res) {
                             if(err) {
