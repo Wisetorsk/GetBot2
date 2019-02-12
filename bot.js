@@ -96,7 +96,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 break;
 
             case 'ontime':
-                msg(channelId, 'Bot ontime: ' + ((new Date() - startTime)/1000)/60);
+                msg(channelID, 'Bot ontime: ' + ((new Date() - startTime)/1000)/60);
                 break;
 
             case 'REBOOT':
