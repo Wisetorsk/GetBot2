@@ -126,7 +126,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                                 errorOut(channelID, err);
                                 return;
                             }
-                            msg(channelID, res);
+                            msg(channelID, res.code);
                         })
                     }
                 }
