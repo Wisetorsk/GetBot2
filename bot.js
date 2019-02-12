@@ -208,6 +208,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
          }
          writeLog(cmd, user, outcome);
      }
+}).then(ms => {
+    ms.delete(10000)
+}).catch(err => {
+    msg(channelID, 'Error');
 });
 
 
