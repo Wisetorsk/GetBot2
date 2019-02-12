@@ -65,7 +65,6 @@ bot.on('guildMemberAdd', function(callback) { /* Event called when someone joins
 
 bot.on('message', function (user, userID, channelID, message, evt) {
     // It will listen for messages that will start with `!`
-    console.log(message.id);
     if (message.substring(0, 1) == '!') {
         
         var args = message.substring(1).split(' ');
