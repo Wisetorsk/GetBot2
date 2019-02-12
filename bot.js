@@ -246,7 +246,7 @@ function removeUser(ID) {
 }
 
 function writeToJSON(data) {
-    fs.writeFileSync('./users.json', JSON.stringify(data));
+    fs.writeFileSync('../users.json', JSON.stringify(data));
 }
 
 function reboot() {
