@@ -62,6 +62,7 @@ bot.on('guildMemberAdd', function(callback) { /* Event called when someone joins
 bot.on('message', function (user, userID, channelID, message, evt) {
     // It will listen for messages that will start with `!`
     if (message.substring(0, 1) == '!') {
+        
         var args = message.substring(1).split(' ');
         var cmd = args[0];
         args = args.splice(1);
@@ -79,6 +80,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     to: channelID,
                     message: 'Pong!'
                 });
+                deleteMessage(channelID, evt.d.id);
                 break;
 
             case 'PULL':
@@ -88,15 +90,17 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                         if (err) {
                           // node couldn't execute the command
                           console.log('Exec failed');
-                          errorOut(channels.test, 'Refresh failed.\n' + err)
+                          errorOut(channels.test, 'Refresh failed.\n' + err);
                           return;
                         }
                       });
                 }
+                deleteMessage(channelID, evt.d.id);
                 break;
 
             case 'ontime':
-                msg(channelID, 'Bot ontime: ' + ((new Date() - startTime)/1000)/60);
+                msg(channelID, 'Bot ontime: ' + ((new Date() - startTime)/1000)/60 + ' minutes');
+                deleteMessage(channelID, evt.d.id);
                 break;
 
             case 'REBOOT':
@@ -106,6 +110,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 } else {
                     errorOut(channelID, 'User not authorized');
                 }
+                deleteMessage(channelID, evt.d.id);
                 break;
 
             case 'REFRESH':
@@ -116,11 +121,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     msg(channelID, 'You are not authorized for this command.');
                 }
                 outcome = true;
+                deleteMessage(channelID, evt.d.id);
                 break;
 
             case 'help':
                 msg(channelID, helpMessage1);
                 msg(channelID, helpMessage2);
+                deleteMessage(channelID, evt.d.id);
                 break;
 
             case 'KILL':
@@ -129,6 +136,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     setTimeout(process.exit, 2000);
                 }
                 outcome = true;
+                deleteMessage(channelID, evt.d.id);
                 break;
 
             case 'REMOVE':
@@ -141,6 +149,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     msg(channelID, 'You cannot delete yourself');
                 }
                 outcome = true;
+                deleteMessage(channelID, evt.d.id);
                 break;
 
             case 'REGISTER':
@@ -154,22 +163,27 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 }
                 console.log(users);
                 outcome = true;
+                deleteMessage(channelID, evt.d.id);
                 break;
 
             case 'obs':
                 msg(channelID, 'https://obsproject.com/download');
+                deleteMessage(channelID, evt.d.id);
                 break;
 
             case 'vs':
                 msg(channelID, 'https://visualstudio.microsoft.com/');
+                deleteMessage(channelID, evt.d.id);
                 break;
 
             case 'moodle':
                 msg(channelID, 'https://getacademy.moodlecloud.com/');
+                deleteMessage(channelID, evt.d.id);
                 break;
             
             case 'fredag':
                 msg(channelID, '**__FREDAG__**\n\n```Husk å spille inn video av hva du har gjort denne uken. Husk å ta med hva du fikk til og hva du ikke fikk til. Videoen laster du opp til google photos eller youtube og sender Marius eller Geir linken.\n```');
+                deleteMessage(channelID, evt.d.id);
                 break;
 
             case 'ALERT':
@@ -179,10 +193,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     msg(channelID, 'You are not registered admin');
                 }
                 outcome = true;
+                deleteMessage(channelID, evt.d.id);
                 break;
 
             default:
                 msg(channelID, 'Unknown command. Type !help for help text');
+                deleteMessage(channelID, evt.d.id);
                 break;
 
          }
