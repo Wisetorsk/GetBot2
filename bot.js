@@ -116,7 +116,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     outcome = true;
                     if (args[0] != '') {
                         console.log('No args');
-                        msg(channelID, bot.createInvite({
+                        channelID, bot.createInvite({
                             channelID: channelID,
                             max_age: (24*60*60),
                             max_users: 0,
@@ -124,8 +124,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                         }, function (err, res) {
                             if(err) {
                                 errorOut(channelID, err);
+                                return;
                             }
-                        }))
+                            msg(channelID, res);
+                        })
                     }
                 }
                 deleteMessage(channelID, evt.d.id);
