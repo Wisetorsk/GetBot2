@@ -4,6 +4,8 @@ var auth = require('../auth.json');
 var fs = require('fs');
 var drole = 'START IT 4'; // Default role given to new joins
 var startTime = new Date();
+var timeout = 30; // Server message timeout in minutes
+
 const { exec } = require('child_process');
 
 var users = require('../users.json');
@@ -64,7 +66,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         setTimeout(function() {
             deleteMessage(channelID, evt.d.id);
             
-        }, 10000);
+        }, 1000*60*timeout);
     }
 });
 
