@@ -63,6 +63,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     if (message.substring(0,6) == 'SERVER') {
         setTimeout(function() {
             deleteMessage(channelID, evt.d.id);
+            
         }, 10000);
     }
 });
@@ -295,4 +296,5 @@ function deleteMessage(channel, message) {
         channelID: channel,
         messageID: message
     });
+    console.log('Mesage id: '+ message + ' Deleted from channel: ' + channel);
 }
