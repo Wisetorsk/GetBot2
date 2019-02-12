@@ -128,7 +128,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                         if(args[0] == '') {
                             msg(channelID, '__**It\'s dangerous to go alone, take this:**__\nhttps://discord.gg/'+res.code);
                         } else if (args[0]) {
-                            msg(args[0], 'https://discord.gg/'+res.code);
+                            msg(args[0], 'https://discord.gg/'+res.code, false);
                             msg(channelID, 'Invite sent to userID: ' + args[0]);
                         }
                     })
@@ -246,7 +246,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
             case 'ALERT':
                 if (mode == 'admin') {
-                    msg(channelID, '<@!everyone>HEISANN!', false);
+                    msg(channelID, '<@!everyone>HEISANN!');
                 } else {
                     msg(channelID, 'You are not registered admin');
                 }
@@ -275,10 +275,10 @@ function addUser(ID, name, admin, channel) {
     writeToJSON(users);
 }
 
-function msg(channel, msg, tts=true) {
+function msg(channel, msg, timeout=true, tts=true) {
     bot.sendMessage({
         to: channel,
-        message: 'SERVER\n' + msg,
+        message: timeout ? 'SERVER\n' + msg: msg,
         tts: tts
     });
 }
