@@ -25,6 +25,7 @@ var helpMessage2 = "\nADMIN level commands:\n" +
 "!KILL - Shuts the bot down. \n" + 
 "!REGISTER userID username admin(true/false) - Adds a user to local user register\n" +
 "!REMOVE userID - Removes a user from the local user register\n" +
+"!POSTLOG - Replies with the server log file\n" +
 "!ALERT message - Posts a tts global message tagging users```";
 
 var channels = {
@@ -97,6 +98,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
             case 'POSTLOG':
                 if (mode == 'admin') {
+                    outcome = true;
                     bot.uploadFile({
                         to: channelID,
                         file: '/var/getBot/GetBot2/log.txt'
@@ -106,10 +108,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                         }
                     })
                 }
+                deleteMessage(channelID, evt.d.id);
                 break;
 
             case 'INVITE':
                 if (mode == 'admin'){
+                    outcome = true;
                     if (args[0] != '') {
                         console.log('No args');
                         bot.createInvite({
@@ -123,10 +127,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                         })
                     }
                 }
+                deleteMessage(channelID, evt.d.id);
                 break;
 
             case 'PULL':
                 if (mode == 'admin') {
+                    outcome = true;
                     msg(channelID, 'Pulling newest build');
                     exec('/var/getBot/GetBot2/pull.sh', (err, stdout, stderr) => {
                         if (err) {
@@ -136,7 +142,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                           return;
                         }
                       });
-                    outcome = true;
                 }
                 deleteMessage(channelID, evt.d.id);
                 break;
