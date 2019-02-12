@@ -84,7 +84,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             case 'ping':
                 bot.sendMessage({
                     to: channelID,
-                    message: 'Pong!'
+                    message: 'SERVER\n Pong!'
                 });
                 deleteMessage(channelID, evt.d.id);
                 break;
@@ -226,7 +226,7 @@ function addUser(ID, name, admin, channel) {
 function msg(channel, msg, tts=true) {
     bot.sendMessage({
         to: channel,
-        message: msg,
+        message: 'SERVER\n' + msg,
         tts: tts
     });
 }
