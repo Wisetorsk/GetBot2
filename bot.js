@@ -191,8 +191,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     var ids = Object.keys(users);
                     var index = 0;
                     var outString = 'List all registered users\n';
-                    for (let user in users) {
-                        outString += 'User ID: ' + ids[index] + '\t\tUsername: ' + user.name + '\t\tAdmin: ' + user.admin;
+                    for (let user of users) {
+                        outString += 'User ID: ' + ids[index] + '\t\tUsername: ' + user.name + '\t\tAdmin: ' + user.admin + '+n';
                         index++;
                     }
                     outcome = true;
