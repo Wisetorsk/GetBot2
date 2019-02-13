@@ -229,7 +229,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 break;
 
                 case 'LISTUSERS':
-                console.log(users);
                      if (mode == 'admin') {
                          outcome = true;
                          let userIDs = Object.keys(users);
