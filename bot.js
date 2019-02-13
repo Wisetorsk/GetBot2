@@ -123,7 +123,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 break;
 
             case 'POSTLOG':
-                postLog(channelID);
+                postLog(channelID, mode);
                 deleteMessage(channelID, evt.d.id);
                 break;
 
@@ -226,7 +226,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 break;
 
             case 'REGISTER':
-                register(channelID);
+                register(channelID, mode);
                 deleteMessage(channelID, evt.d.id);
                 break;
 
@@ -355,7 +355,7 @@ function deleteMessage(channel, message) {
     console.log('Mesage id: '+ message + ' Deleted from channel: ' + channel);
 }
 
-function postLog(channelID) {
+function postLog(channelID, mode) {
     if (mode == 'admin') {
         outcome = true;
         bot.uploadFile({
@@ -370,7 +370,7 @@ function postLog(channelID) {
     }
 }
 
-function register(channelID) {
+function register(channelID, mode) {
     if (mode == 'admin') {
         var givenID = args[0];
         var givenName = args[1];
