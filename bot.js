@@ -235,7 +235,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                      let userIDs = Object.keys(users);
                      let outputString = '__Current registered users__\n';
                      for (let index in users) {
-                         outputString += 'User ID: ' + userIDs[index] + '\t Username: ' + users[userIDs[index]]["name"] + '\t Admin: ' + users[userIDs[index]]["admin"] + '\n';
+                         outputString += 'User ID: ' + userIDs[index] + '\t Username: ' + users[userIDs[index]] + '\t Admin: ' + users[userIDs[index]] + '\n';
                          index++;
                      }
                      msg(channelID, outputString);
