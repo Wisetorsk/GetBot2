@@ -105,10 +105,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     outcome = true;
                     if (args[0]) {
                         deleteMessage(channelID, args[0]);
+                        msg(channelID, 'Message ID: ' + args[0] + ' Deleted');
                     } else {
                         msg(channelID, 'No ID given');
                     }
                 }
+                deleteMessage(channelID, evt.d.id);
                 break;
 
             case 'POSTLOG':
