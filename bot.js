@@ -18,6 +18,7 @@ var helpMessage1 = "**Help/info for oracle bot.** \nMessages sent by the bot has
 "!obs - Post OBS download link\n" + 
 "!moodle - Post moodle link\n" + 
 "!vs - Post Visual Studio link\n" + 
+"!ontime - Shows bot ontime in minutes\n" + 
 "!fredag - Friday message\n```";
 var helpMessage2 = "\nADMIN level commands:\n" + 
 "```\n" +
