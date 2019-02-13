@@ -123,18 +123,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 break;
 
             case 'POSTLOG':
-                if (mode == 'admin') {
-                    outcome = true;
-                    bot.uploadFile({
-                        to: channelID,
-                        file: '/var/getBot/GetBot2/log.txt',
-                        message: 'SERVER\nServer post log'
-                    }, function(err, res) {
-                        if (err) {
-                            errorOut(channelID, err);
-                        }
-                    })
-                }
+                postLog(channelID);
                 deleteMessage(channelID, evt.d.id);
                 break;
 
@@ -237,16 +226,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 break;
 
             case 'REGISTER':
-                if (mode == 'admin') {
-                    var givenID = args[0];
-                    var givenName = args[1];
-                    var adminStatus = args[2];
-                    addUser(givenID, givenName, adminStatus, channelID);
-                    outcome = true;
-                } else {
-                    msg(channelID, 'You are not registered admin');
-                }
-                console.log(users);
+                register(channelID);
                 deleteMessage(channelID, evt.d.id);
                 break;
 
@@ -375,3 +355,30 @@ function deleteMessage(channel, message) {
     console.log('Mesage id: '+ message + ' Deleted from channel: ' + channel);
 }
 
+function postLog(channelID) {
+    if (mode == 'admin') {
+        outcome = true;
+        bot.uploadFile({
+            to: channelID,
+            file: '/var/getBot/GetBot2/log.txt',
+            message: 'SERVER\nServer post log'
+        }, function(err, res) {
+            if (err) {
+                errorOut(channelID, err);
+            }
+        })
+    }
+}
+
+function register(channelID) {
+    if (mode == 'admin') {
+        var givenID = args[0];
+        var givenName = args[1];
+        var adminStatus = args[2];
+        addUser(givenID, givenName, adminStatus, channelID);
+        outcome = true;
+    } else {
+        msg(channelID, 'You are not registered admin');
+    }
+    console.log(users);
+}
