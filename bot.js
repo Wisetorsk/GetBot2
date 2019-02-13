@@ -196,8 +196,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 if (mode == 'admin') {
                     msg(channelID, 'GOODBYE CRUEL WORLD!');
                     setTimeout(process.exit, 2000);
+                    outcome = true;
                 }
-                outcome = true;
                 deleteMessage(channelID, evt.d.id);
                 break;
 
@@ -205,12 +205,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 var userArg = args[0];
                 if (mode == 'admin' && userArg != userID){
                     removeUser(userArg);
+                    outcome = true;
                 } else if (!mode == 'admin') {
                     msg(channelID, 'You are not registered admin');
                 } else {
                     msg(channelID, 'You cannot delete yourself');
                 }
-                outcome = true;
                 deleteMessage(channelID, evt.d.id);
                 break;
 
@@ -220,13 +220,27 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     var givenName = args[1];
                     var adminStatus = args[2];
                     addUser(givenID, givenName, adminStatus, channelID);
+                    outcome = true;
                 } else {
                     msg(channelID, 'You are not registered admin');
                 }
                 console.log(users);
-                outcome = true;
                 deleteMessage(channelID, evt.d.id);
                 break;
+
+            case 'LISTUSERS':
+                if (mode == 'admin') {
+                    outcome = true;
+                    let userIDs = Object.keys(users);
+                    let index = 0;
+                    let outputString = '__Current registered users__\n';
+                    for (let user of users) {
+                        outputString += 'User ID: ' + userIDs[index] + '\t Username: ' + user.name + '\t Admin: ' + user.admin + '\n';
+                        index++;
+                    }
+                    msg(channelID, outputString);
+                }
+
 
             case 'obs':
                 msg(channelID, 'https://obsproject.com/download');
