@@ -133,20 +133,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 break;
 
             case 'PULL':
-                if (mode == 'admin') {
-                    outcome = true;
-                    msg(channelID, 'Pulling newest build');
-                    exec('/var/getBot/GetBot2/pull.sh', (err, stdout, stderr) => {
-                        if (err) {
-                          // node couldn't execute the command
-                          console.log('Exec failed');
-                          errorOut(channels.test, 'Refresh failed.\n' + err);
-                          return;
-                        } else {
-                            msg(channelID, 'Pull complete');
-                        }
-                      });
-                }
+                pull(channelID, mode);
                 deleteMessage(channelID, evt.d.id);
                 break;
 
@@ -384,5 +371,22 @@ function invite(channelID, mode, args) {
             }
         })
         
+    }
+}
+
+function pull(channelID, mode) {
+    if (mode == 'admin') {
+        outcome = true;
+        msg(channelID, 'Pulling newest build');
+        exec('/var/getBot/GetBot2/pull.sh', (err, stdout, stderr) => {
+            if (err) {
+              // node couldn't execute the command
+              console.log('Exec failed');
+              errorOut(channels.test, 'Refresh failed.\n' + err);
+              return;
+            } else {
+                msg(channelID, 'Pull complete');
+            }
+          });
     }
 }
