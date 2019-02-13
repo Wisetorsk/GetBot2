@@ -228,7 +228,18 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 deleteMessage(channelID, evt.d.id);
                 break;
 
-
+                case 'LISTUSERS':
+                console.log(users);
+                     if (mode == 'admin') {
+                         outcome = true;
+                         let userIDs = Object.keys(users);
+                         let outputString = '__Current registered users__\n';
+                         for (let index in users) {
+                             outputString += 'User ID: ' + userIDs[index] + '\t';
+                         }
+                         msg(channelID, outputString);
+                    }
+                    break;
 
 
             case 'obs':
