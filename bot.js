@@ -66,12 +66,19 @@ bot.on('guildMemberAdd', function(callback) { /* Event called when someone joins
 });
 
 bot.on('message', function (user, userID, channelID, message, evt) {
-    writeLog('POST message id: ' + evt.d.id, 'SERVER', true);
+
+})
+
+bot.on('message', function (user, userID, channelID, message, evt) {
+    
     if (message.substring(0,6) == 'SERVER') {
+        writeLog('POST message ID: ' + evt.d.id, 'SERVER', true);
         setTimeout(function() {
             deleteMessage(channelID, evt.d.id);
             
         }, 1000*60*timeout);
+    } else {
+        writeLog('Message ID: ' + evt.d.id + ' \t Message: ' + message, 'LOG', true);
     }
 });
 
