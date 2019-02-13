@@ -100,6 +100,17 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 deleteMessage(channelID, evt.d.id);
                 break;
 
+            case 'DELETE':
+                if(mode == 'admin') {
+                    outcome = true;
+                    if (args[0]) {
+                        deleteMessage(channelID, args[0]);
+                    } else {
+                        msg(channelID, 'No ID given');
+                    }
+                }
+                break;
+
             case 'POSTLOG':
                 if (mode == 'admin') {
                     outcome = true;
