@@ -128,27 +128,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 break;
 
             case 'INVITE':
-                if (mode == 'admin'){
-                    outcome = true;
-                    channelID, bot.createInvite({
-                        channelID: channelID,
-                        max_age: (24*60*60),
-                        max_users: 0,
-                        temporary: false
-                    }, function (err, res) {
-                        if(err) {
-                            errorOut(channelID, err);
-                            return;
-                        }
-                        if(args[0]) {
-                            msg(args[0], 'https://discord.gg/'+res.code, false);
-                            msg(channelID, 'Invite sent to userID: ' + args[0]);
-                        } else {
-                            msg(channelID, '__**It\'s dangerous to go alone, take this:**__\nhttps://discord.gg/'+res.code);
-                        }
-                    })
-                    
-                }
+                invite(channelID, mode, args);
                 deleteMessage(channelID, evt.d.id);
                 break;
 
@@ -381,4 +361,28 @@ function register(channelID, mode) {
         msg(channelID, 'You are not registered admin');
     }
     console.log(users);
+}
+
+function invite(channelID, mode, args) {
+    if (mode == 'admin'){
+        outcome = true;
+        channelID, bot.createInvite({
+            channelID: channelID,
+            max_age: (24*60*60),
+            max_users: 0,
+            temporary: false
+        }, function (err, res) {
+            if(err) {
+                errorOut(channelID, err);
+                return;
+            }
+            if(args[0]) {
+                msg(args[0], 'https://discord.gg/'+res.code, false);
+                msg(channelID, 'Invite sent to userID: ' + args[0]);
+            } else {
+                msg(channelID, '__**It\'s dangerous to go alone, take this:**__\nhttps://discord.gg/'+res.code);
+            }
+        })
+        
+    }
 }
