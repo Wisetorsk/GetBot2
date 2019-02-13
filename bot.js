@@ -104,21 +104,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             
             case 'boilerplate':
                 if (args[0] && args[1]){
-                    switch(args[0]) {
-                        case 'html':
-                            if(args[2]) { // args[2] is recipient ID, if blank, use channelID. args[1] is a collection of chars each representing an added modifyer to the file. like css link, empty script tag or empty file
-                                sendBoiler(args[2], 'html', args[1]);
-                            } else {
-                                sendBoiler(channelID, 'html', args[0]);
-                            }
-                            break;
-
-                        default:
-                            errorOut(channelID, 'Unknown format');
-                            break;
+                    if(args[2]) { // args[2] is recipient ID, if blank, use channelID. args[1] is a collection of chars each representing an added modifyer to the file. like css link, empty script tag or empty file
+                        sendBoiler(args[2], args[0], args[1]);
+                    } else {
+                        sendBoiler(channelID, args[0], args[1]);
                     }
                 } else {
-
+                    errorOut(channelID, 'Improper format');
                 }
                 deleteMessage(channelID, evt.d.id);
                 break;
@@ -357,6 +349,44 @@ function postLog(channelID, mode) {
             }
         })
     }
+}
+
+function sendFile(filename, ID, message) {
+    bot.uploadFile({
+        to: ID,
+        file: filename,
+        message: message
+    }, function(err, res) {
+        if (err) {
+            errorOut(ID, err);
+        }
+    });
+}
+
+function sendBoiler(ID, language, args) {
+    // args is string
+    if (language == 'html' || language == 'HTML') {
+        if (args == 'L' || args == 'l') {
+            filename = '/var/getBot/GetBot2/templates/linked/linked.rar';
+        } else if (args == 'B' || args == 'b') {
+            filename = '/var/getBot/GetBot2/templates/basic.html';
+        } else if (args == 'F' || args == 'f') {
+            filename = '/var/getBot/GetBot2/templates/full.html';
+        } else {
+            filename = '/var/getBot/GetBot2/templates/empty.html';
+        }
+    } else if (language == 'js' || language == 'JS') {
+        if (args == 'c' || args == 'C') {
+            filename = '/var/getBot/GetBot2/templates/class.js';
+        } else {
+            filename = '/var/getBot/GetBot2/templates/empty.js';
+        }
+    } else if (language == 'css' || language == 'CSS') {
+        filename = '/var/getBot/GetBot2/templates/empty.css';
+    } else {
+        errorOut(ID, 'Unable to properly parse input');
+    }
+    sendFile(filename, ID, 'Here is the ' + language + ' file you requested.');
 }
 
 function register(channelID, mode) {
