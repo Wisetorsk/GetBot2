@@ -42,11 +42,11 @@ var boilerplateHelp = "__**Boilerplate**__\n" +
 "Usage: !boilerplate language argument userID \n" + 
 "If the argument field is empty, the returned file will be empty\n" + 
 "If the third argument is valid, it will send a PM to the given ID\n" +
-"Languages: " +
+"Languages: \n" +
 "\t html\n" +  
 "\t css\n" +  
 "\t js\n\n" +
-"Arguments" + 
+"Arguments\n" + 
 "\t l - Linked files (html)\n" + 
 "\t b - Basic boilerplate (html)\n" +
 "\t f - Full boilerplate (html)\n" +
