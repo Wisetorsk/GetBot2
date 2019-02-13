@@ -101,6 +101,28 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         }
 
         switch(cmd) {
+            
+            case 'boilerplate':
+                if (args[0] && args[1]){
+                    switch(args[0]) {
+                        case 'html':
+                            if(args[2]) { // args[2] is recipient ID, if blank, use channelID. args[1] is a collection of chars each representing an added modifyer to the file. like css link, empty script tag or empty file
+                                sendBoiler(args[2], 'html', args[1]);
+                            } else {
+                                sendBoiler(channelID, 'html', args[0]);
+                            }
+                            break;
+
+                        default:
+                            errorOut(channelID, 'Unknown format');
+                            break;
+                    }
+                } else {
+
+                }
+                deleteMessage(channelID, evt.d.id);
+                break;
+
             case 'ping':
                 bot.sendMessage({
                     to: channelID,
@@ -220,7 +242,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
             case 'ALERT':
                 if (mode == 'admin') {
-                    msg(channelID, '<@!everyone>HEISANN!');
+                    msg(channelID, 'HEISANN!');
                 } else {
                     msg(channelID, 'You are not registered admin');
                 }
