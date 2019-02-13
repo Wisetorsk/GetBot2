@@ -232,7 +232,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             console.log(users);
                  if (mode == 'admin') {
                      outcome = true;
-                     let userIDs = Object.keys(JSON.parse(users));
+                     let userIDs = Object.keys(users);
                      let index = 0;
                      let outputString = '__Current registered users__\n';
                      for (let user of JSON.parse(users)) {
