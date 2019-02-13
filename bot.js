@@ -9,6 +9,7 @@ var timeout = 1; // Server message timeout in minutes
 const { exec } = require('child_process');
 
 var users = require('../users.json');
+
 var helpMessage1 = "**Help/info for oracle bot.** \nMessages sent by the bot has a timeout of  " + timeout + ((timeout == 1) ? " minute" : " minutes") +"\n" + 
 "The bot automatically deletes the invocing command\n" + 
 "Available commands: \n" + 
@@ -19,7 +20,9 @@ var helpMessage1 = "**Help/info for oracle bot.** \nMessages sent by the bot has
 "!moodle - Post moodle link\n" + 
 "!vs - Post Visual Studio link\n" + 
 "!ontime - Shows bot ontime in minutes\n" + 
-"!fredag - Friday message\n```";
+"!fredag - Friday message\n";
+"!boilerplate language argument - returns file of the given language. (!help boilerplate for info)\n```";
+
 var helpMessage2 = "\nADMIN level commands:\n" + 
 "```\n" +
 "!REFRESH - Used to restart the bot server program.\n" +
@@ -32,6 +35,25 @@ var helpMessage2 = "\nADMIN level commands:\n" +
 "!POSTLOG - Replies with the server log file\n" +
 "!INVITE userID - if userID is given the server sends the invite to that user in pm, else it will post an invite link in chat\n" +
 "!ALERT message - Posts a tts global message tagging users```";
+
+var boilerplateHelp = "__**Boilerplate**__\n" + 
+"```\n" + 
+"!boilerplate returns a file or file set of the selected language\n" + 
+"Usage: !boilerplate language argument userID \n" + 
+"If the argument field is empty, the returned file will be empty\n" + 
+"If the third argument is valid, it will send a PM to the given ID\n" +
+"Languages: " +
+"\t html\n" +  
+"\t css\n" +  
+"\t js\n\n" +
+"Arguments" + 
+"\t l - Linked files (html)\n" + 
+"\t b - Basic boilerplate (html)\n" +
+"\t f - Full boilerplate (html)\n" +
+"\t c - js Class template (javascript)\n" +
+"Example: !boilerplate html l - returns a linked set of files(html, css, js) in a .rar archive in chat\n" + 
+"```";
+
 
 var channels = {
     test: '540248332069765134',
@@ -179,8 +201,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 break;
                 
             case 'help':
-                msg(channelID, helpMessage1);
-                msg(channelID, helpMessage2);
+                if (args[0]) {
+                    if (args[0] == 'boilerplate') {
+                        msg(channelID, boilerplateHelp);
+                    }
+                } else {
+                    msg(channelID, helpMessage1 + helpMessage2);
+                }
                 deleteMessage(channelID, evt.d.id);
                 break;
 
