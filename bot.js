@@ -9,7 +9,7 @@ var timeout = 1; // Server message timeout in minutes
 const { exec } = require('child_process');
 
 var users = require('../users.json');
-var helpMessage1 = "**Help/info for oracle bot.** \nMessages sent by the bot has a timeout of  " + timeout + (timeout == 1) ? " minute" : " minutes" +"\n" + 
+var helpMessage1 = "**Help/info for oracle bot.** \nMessages sent by the bot has a timeout of  " + timeout + ((timeout == 1) ? " minute" : " minutes") +"\n" + 
 "The bot automatically deletes the invocing command\n" + 
 "Available commands: \n" + 
 "```\n" + 
