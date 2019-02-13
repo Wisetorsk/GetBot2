@@ -28,6 +28,7 @@ var helpMessage2 = "\nADMIN level commands:\n" +
 "!KILL - Shuts the bot down. \n" + 
 "!REGISTER userID username admin(true/false) - Adds a user to local user register\n" +
 "!REMOVE userID - Removes a user from the local user register\n" +
+"!DELETE messageID - Removes a message with given ID from the chatroom\n" +
 "!POSTLOG - Replies with the server log file\n" +
 "!INVITE userID - if userID is given the server sends the invite to that user in pm, else it will post an invite link in chat\n" +
 "!ALERT message - Posts a tts global message tagging users```";
