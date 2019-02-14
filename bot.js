@@ -128,7 +128,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 if (args[0]){
                     if(args[2]) { // args[2] is recipient ID, if blank, use channelID. args[1] is a collection of chars each representing an added modifyer to the file. like css link, empty script tag or empty file
                         sendBoiler(args[2], args[0], args[1]);
-                        msg(channelID, 'Boilerplate sent to user:' + args[2] + '\nUsername: ' + users[args[2]][name]);
+                        msg(channelID, 'Boilerplate sent to user:' + args[2] + '\nUsername: ' + users[args[2]]["name"]);
                     } else {
                         sendBoiler(channelID, args[0], args[1]);
                     }
