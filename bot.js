@@ -21,7 +21,7 @@ var helpMessage1 = "**Help/info for oracle bot.** \nMessages sent by the bot has
 "!vs - Post Visual Studio link\n" + 
 "!ontime - Shows bot ontime in minutes\n" + 
 "!fredag - Friday message\n";
-"!boilerplate language argument - returns file of the given language. (!help boilerplate for info)\n```";
+"!boilerplate language argument - returns file of the given language. (!help boilerplate for info)\n```\n";
 
 var helpMessage2 = "\nADMIN level commands:\n" + 
 "```\n" +
@@ -34,7 +34,7 @@ var helpMessage2 = "\nADMIN level commands:\n" +
 "!DELETE messageID - Removes a message with given ID from the chatroom\n" +
 "!POSTLOG - Replies with the server log file\n" +
 "!INVITE userID - if userID is given the server sends the invite to that user in pm, else it will post an invite link in chat\n" +
-"!ALERT message - Posts a tts global message tagging users```";
+"!ALERT message - Posts a tts global message tagging users\n```\n";
 
 var boilerplateHelp = "__**Boilerplate**__\n" + 
 "```\n" + 
