@@ -138,6 +138,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 deleteMessage(channelID, evt.d.id);
                 break;
 
+            case 'LISTUSERS':
+                listUsers(channelID, mode);
+                deleteMessage(channelID, evt.d.id);
+                break;
+
             case 'ping':
                 bot.sendMessage({
                     to: channelID,
@@ -469,5 +474,18 @@ function pull(channelID, mode) {
                 msg(channelID, 'Pull complete');
             }
           });
+    }
+}
+
+function listUsers(channelID, mode) {
+    if (mode == 'admin') {
+        let out = '**__Registered users:__**\n';
+        let ids = Object.keys(users);
+        for (let id of ids) {
+            out += 'ID: \t' + id + '\tUsername: \t' + users[id]["name"] + '\t Admin: ' + users[id]["admin"];
+        }
+        msg(channelID, out);
+    } else {
+        errorOut(channelID, 'Unverified user invoking command!');
     }
 }
