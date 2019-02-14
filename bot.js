@@ -483,7 +483,7 @@ function listUsers(channelID, mode) {
         let out = '**__Registered users:__**\n```\n';
         let ids = Object.keys(users);
         for (let id of ids) {
-            out += 'ID: \t' + id + '\tUsername: \t' + users[id]["name"] + '\t Admin: ' + users[id]["admin"] + '\n';
+            out += 'ID: \t' + id + '\tUsername: \t' + users[id]["name"] + '\t\t\tAdmin: ' + users[id]["admin"] + '\n';
         }
         out += '```';
         msg(channelID, out);
