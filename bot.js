@@ -231,6 +231,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 var userArg = args[0];
                 if (mode == 'admin' && userArg != userID){
                     removeUser(userArg);
+                    msg(channelID, 'Removed user: ' + userArg);
                     outcome = true;
                 } else if (!mode == 'admin') {
                     msg(channelID, 'You are not registered admin');
