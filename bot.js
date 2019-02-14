@@ -92,10 +92,6 @@ bot.on('guildMemberAdd', function(callback) { /* Event called when someone joins
 });
 
 bot.on('message', function (user, userID, channelID, message, evt) {
-
-})
-
-bot.on('message', function (user, userID, channelID, message, evt) {
     
     if (message.substring(0,6) == 'SERVER') {
         writeLog('POST message ID: ' + evt.d.id, 'SERVER', true);
@@ -145,6 +141,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 deleteMessage(channelID, evt.d.id);
                 break;
 
+            case 'math':
+                math(channelID, args);
+                deleteMessage(channelID, evt.d.id);
+                break;
+            
             case 'LISTUSERS':
                 listUsers(channelID, mode);
                 deleteMessage(channelID, evt.d.id);
@@ -293,7 +294,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
          writeLog(cmd, user, outcome);
      }
 });
-
 
 function addUser(ID, name, admin, channel) {
     users[ID] = {
@@ -498,4 +498,20 @@ function listUsers(channelID, mode) {
     } else {
         errorOut(channelID, 'Unverified user invoking command!');
     }
+}
+
+function math(channelID, args) {
+    // Based on the arguments given, parse out numbers and operators, and evaluate accordingly. REMEMBER TO ESCAPE!!!!!!!
+    var argstring = args.join('');
+    argstring = escape(argstring);
+    let number = eval(argstring);
+    msg(channelID, 'Result: ' + number);
+}
+
+function escape(string) {
+    let forbidden = 'abcdefghijklmnopqrstuvqxyzæøå`"_';
+    for (let letter of forbidden) {
+        string.replace(letter, '');
+    }
+    return string;
 }
