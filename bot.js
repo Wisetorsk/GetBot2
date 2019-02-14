@@ -206,7 +206,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                         msg(channelID, boilerplateHelp);
                     }
                 } else {
-                    msg(channelID, helpMessage1 + helpMessage2);
+                    msg(channelID, helpMessage1);
+                    msg(channelID, helpMessage2);
                 }
                 deleteMessage(channelID, evt.d.id);
                 break;
