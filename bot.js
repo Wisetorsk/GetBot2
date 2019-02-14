@@ -331,9 +331,9 @@ function reboot() {
     console.log('Rebooting');
     var script = 'null';
     if (process.platform === 'win32') {
-        script = 'reboot.bat';
+        script = 'scripts/reboot.bat';
     } else {
-        script = '/var/getBot/GetBot2/reboot.sh';
+        script = '/var/getBot/GetBot2/scripts/reboot.sh';
     }
     exec(script, (err, stdout, stderr) => {
         if (err) {
@@ -350,9 +350,9 @@ function reset() {
     setTimeout(process.exit, 5000);
     var script = 'null';
     if (process.platform === 'win32') {
-        script = '/var/getBot/GetBot2/reset.bat';
+        script = 'scripts/reset.bat';
     } else if (process.platform === 'linux') {
-        script = '/var/getBot/GetBot2/reset.sh';
+        script = '/var/getBot/GetBot2/scripts/reset.sh';
     }
     exec(script, (err, stdout, stderr) => {
         if (err) {
@@ -473,7 +473,7 @@ function pull(channelID, mode) {
     if (mode == 'admin') {
         outcome = true;
         msg(channelID, 'Pulling newest build');
-        exec('/var/getBot/GetBot2/pull.sh', (err, stdout, stderr) => {
+        exec('/var/getBot/GetBot2/scripts/pull.sh', (err, stdout, stderr) => {
             if (err) {
               // node couldn't execute the command
               console.log('Exec failed');
