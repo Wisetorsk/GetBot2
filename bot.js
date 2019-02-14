@@ -314,6 +314,7 @@ function errorOut(channel, text) {
 
 function removeUser(ID) {
     delete users[ID];
+    writeToJSON(users);
 }
 
 function writeToJSON(data) {
