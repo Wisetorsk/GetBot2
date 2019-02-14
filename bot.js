@@ -515,7 +515,8 @@ function math(channelID, args) {
 function escape(string) {
     let forbidden = 'abcdefghijklmnopqrstuvqxyzæøå`"_';
     for (let letter of forbidden) {
-        string.replace(letter, '');
+        string = string.replace(letter, '');
     }
+    console.log(string);
     return string;
 }
