@@ -29,6 +29,7 @@ var helpMessage2 = "\nADMIN level commands:\n" +
 "!PULL - Pulls the newest build from github.\n" +
 "!REBOOT - Used to restart the bot server.\n" +
 "!KILL - Shuts the bot down. \n" + 
+"!LISTUSERS - Lists all users registered on the server. \n" + 
 "!REGISTER userID username admin(true/false) - Adds a user to local user register\n" +
 "!REMOVE userID - Removes a user from the local user register\n" +
 "!DELETE messageID - Removes a message with given ID from the chatroom\n" +
