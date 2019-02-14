@@ -139,7 +139,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                         errorOut(channelID, 'Improper format');
                     }
                 } catch(err) {
-                    msg(channelID, 'Message sent to: UNKNOWN USER ID');
+                    msg(channelID, 'Message send attempt to: UNKNOWN USER ID');
                     sendBoiler(args[2], args[0], args[1]);
                 }
                 deleteMessage(channelID, evt.d.id);
