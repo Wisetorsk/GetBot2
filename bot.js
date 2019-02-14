@@ -502,10 +502,14 @@ function listUsers(channelID, mode) {
 
 function math(channelID, args) {
     // Based on the arguments given, parse out numbers and operators, and evaluate accordingly. REMEMBER TO ESCAPE!!!!!!!
-    var argstring = args.join('');
-    argstring = escape(argstring);
-    let number = eval(argstring);
-    msg(channelID, 'Result: ' + number);
+    try {
+        var argstring = args.join('');
+        argstring = escape(argstring);
+        let number = eval(argstring);
+        msg(channelID, 'Result: ' + number);
+    } catch(err) {
+        errorOut(channelID, err);
+    }
 }
 
 function escape(string) {
