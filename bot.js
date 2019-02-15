@@ -530,7 +530,7 @@ function search(website, query) {
     query.shift();
     let link = false;
     if (website == 'google') {
-        siteLink = 'https://www.google.com/search?hl=no&q=test+string&btnK=Google-søk&oq=';
+        siteLink = 'https://www.google.com/search?hl=no&q=';
         query.join('+');
         link = siteLink + query;
     }
