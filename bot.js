@@ -532,6 +532,7 @@ function search(website, query) {
     if (website == 'google') {
         siteLink = 'https://www.google.com/search?hl=no&q=';
         query.join('+');
+        console.log(query);
         link = siteLink + query;
     }
     return (link) ? link : 'Error in query parsing';
