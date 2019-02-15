@@ -87,8 +87,13 @@ setTimeout(function() {
 
 bot.on('guildMemberAdd', function(callback) { /* Event called when someone joins the server */
     if(callback.guild_id == channels.test)
+    msg('Adding role to user');
+    addUser(callback.id, 'UNKNOWN', false, channels.test);
       bot.addToRole({"serverID":channels.test,"userID":callback.id,"roleID":drole},function(err,response) {
-        if (err) console.error(err); /* Failed to apply role */
+        if (err){
+            console.error(err); /* Failed to apply role */
+            errorOut(channels.test, err);
+        }
     });
 });
 
@@ -387,6 +392,7 @@ function deleteMessage(channel, message) {
 
 function postLog(channelID, mode) {
     if (mode == 'admin') {
+        console.log(logger.log);
         outcome = true;
         bot.uploadFile({
             to: channelID,
@@ -545,4 +551,8 @@ function search(website, query) {
 
 function imgur(query) {
     // This function will use the imgur API to search for an image and return the result
+}
+
+function spotify(query) {
+    // This function will search spotify using the spotify api and return a song link
 }
