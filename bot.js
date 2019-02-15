@@ -21,7 +21,8 @@ var helpMessage1 = "**Help/info for oracle bot.** \nMessages sent by the bot has
 "!vs - Post Visual Studio link\n" + 
 "!ontime - Shows bot ontime in minutes\n" + 
 "!fredag - Friday message\n" +
-"!boilerplate language argument - returns file of the given language. (!help boilerplate for info)\n```\n";
+"!search [website] [arguments] - Returns a formatted search URL for the given site\n" +
+"!boilerplate [language] [argument] - returns file of the given language. (!help boilerplate for info)\n```\n";
 
 var helpMessage2 = "\nADMIN level commands:\n" + 
 "```\n" +
