@@ -123,7 +123,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         switch(cmd) {
             
             case 'search':
-                search(args[0], args)
+                msg(channelID, search(args[0], args));
                 deleteMessage(channelID, evt.d.id);
                 break;
 
