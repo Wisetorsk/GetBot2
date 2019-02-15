@@ -529,9 +529,19 @@ function escape(string) {
 function search(website, query) {
     query.shift();
     let link = false;
-    if (website == 'google') {
+    if (website == 'google' || website == 'GOOGLE') {
         siteLink = 'https://www.google.com/search?hl=no&q=';
         link = siteLink + query.join('+');
+    } else if (website == 'imgur' || website == 'IMGUR') {
+        sitelink = 'https://imgur.com/search?q=';
+        link = sitelink + query.join('%20');
+    } else if (website == 'duckduckgo'|| website == 'DUCKDUCKGO'){
+        siteLink = 'https://duckduckgo.com/?q=';
+        link = siteLink + query.join('+') + '&t=h_';
     }
-    return (link) ? link : 'Error in query parsing';
+    return (link) ? link : 'Error in query parsing. Website: ' + website + ' Args: ' + query;
+}
+
+function imgur(query) {
+    // This function will use the imgur API to search for an image and return the result
 }
