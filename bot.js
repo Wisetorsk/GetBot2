@@ -392,7 +392,6 @@ function deleteMessage(channel, message) {
 
 function postLog(channelID, mode) {
     if (mode == 'admin') {
-        console.log(logger.log());
         outcome = true;
         bot.uploadFile({
             to: channelID,
