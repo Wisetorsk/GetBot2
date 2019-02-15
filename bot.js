@@ -122,6 +122,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
         switch(cmd) {
             
+            case 'search':
+                search(args[0], args)
+                deleteMessage(channelID, evt.d.id);
+                break;
+
             case 'boilerplate':
                 try {
                     if (args[0]){
@@ -519,4 +524,15 @@ function escape(string) {
     }
     console.log(string);
     return string;
+}
+
+function search(website, query) {
+    query.shift();
+    let link = false;
+    if (website == 'google') {
+        siteLink = 'https://www.google.com/search?hl=no&q=test+string&btnK=Google-søk&oq=';
+        query.join('+');
+        link = siteLink + query;
+    }
+    return (link) ? link : 'Error in query parsing';
 }
