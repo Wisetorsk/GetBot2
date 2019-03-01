@@ -199,7 +199,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 break;
 
             case 'ontime':
-                msg(channelID, 'Bot ontime: ' + Math.round(((new Date() - startTime)/10000)/60, 1) + ' minutes');
+                msg(channelID, 'Bot ontime: ' + Math.round(((new Date() - startTime)/1000)/60, 1) + ' minutes');
                 deleteMessage(channelID, evt.d.id);
                 break;
 
